@@ -1,0 +1,11 @@
+﻿# 蹇界暐鐪熷疄鐜鍙橀噺
+.env
+
+# 蹇界暐鏋勫缓浜х墿
+backend/*.jar
+frontend/dist/
+
+# 蹇界暐鏁版嵁鍗?volumes/mysql_data/*
+volumes/backend_data/*
+volumes/redis_data/*
+!volumes/*/.gitkeep

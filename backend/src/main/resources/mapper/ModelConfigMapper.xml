@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartkb.mapper.ModelConfigMapper">
+
+    <!-- 单表查询：所有启用模型 -->
+    <select id="selectActiveModels" resultType="com.smartkb.entity.model.ModelConfigDO">
+        SELECT id, name, code, base_url, api_key, model_name, is_active, sort_order, created_time, updated_time
+        FROM model_config
+        WHERE is_active = 1
+        ORDER BY sort_order ASC
+    </select>
+
+    <!-- 单表查询：根据 code 查单条 -->
+    <select id="selectByCode" resultType="com.smartkb.entity.model.ModelConfigDO">
+        SELECT id, name, code, base_url, api_key, model_name, is_active, sort_order, created_time, updated_time
+        FROM model_config
+        WHERE code = #{code}
+          AND is_active = 1
+        LIMIT 1
+    </select>
+
+</mapper>

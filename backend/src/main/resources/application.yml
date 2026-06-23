@@ -1,0 +1,67 @@
+﻿server:
+  port: 8080
+
+spring:
+  application:
+    name: smartkb
+
+  # ============================================================
+  # Datasource: H2 (development) / MySQL (production)
+  # ============================================================
+  datasource:
+    # ---- H2 file mode (development, default) ----
+    url: jdbc:h2:file:./data/smartkb;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+    # ---- MySQL (production, uncomment & comment H2 above) ----
+    # url: jdbc:mysql://localhost:3306/smartkb?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+    # username: root
+    # password: ${MYSQL_PASSWORD:root}
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  sql:
+    init:
+      # never = tables already exist; switch to 'always' for fresh DB
+      mode: never
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/seed-data.sql
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.smartkb.entity.model
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+# ============================================================
+# SmartKB Application Config
+# ============================================================
+smartkb:
+  chat:
+    max-history-messages: 20
+
+  # LLM model config: use DeepSeek or Bailian
+  # API key injected via environment variable for security
+  model:
+    deepseek:
+      base-url: https://api.deepseek.com/v1
+      api-key: ${DEEPSEEK_API_KEY:sk-placeholder}
+      model-name: deepseek-chat
+    bailian:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: ${BAILIAN_API_KEY:sk-placeholder}
+      model-name: qwen-max
+    classifier:
+      base-url: https://api.deepseek.com/v1
+      api-key: ${DEEPSEEK_API_KEY:sk-placeholder}
+      model-name: deepseek-chat

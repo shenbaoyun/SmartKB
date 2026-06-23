@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartkb.mapper.MessageMapper">
+
+    <!-- 单表查询：按会话ID查历史消息，取最近 N 条 -->
+    <select id="selectByConversationId" resultType="com.smartkb.entity.model.MessageDO">
+        SELECT id, conversation_id, role, content, prompt_id, prompt_name, model_code, created_time
+        FROM message
+        WHERE conversation_id = #{conversationId}
+        ORDER BY created_time ASC
+        LIMIT #{limit}
+    </select>
+
+    <!-- 单表删除：按会话ID删除消息 -->
+    <delete id="deleteByConversationId">
+        DELETE FROM message WHERE conversation_id = #{conversationId}
+    </delete>
+
+</mapper>

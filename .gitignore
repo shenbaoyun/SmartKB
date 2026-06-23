@@ -1,0 +1,30 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Node
+node_modules/
+
+# H2 Database
+*.mv.db
+*.trace.db
+
+# IDE
+.idea/
+*.iml
+
+# Build
+backend/target/
+frontend/dist/
+
+# Env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
