@@ -1,5 +1,7 @@
 ﻿# SmartKB — 智能知识库对话平台
 
+[English](./README.en.md)
+
 > 动态 Prompt 插件系统 | 多模型自由切换 | RAG 知识库问答 | SSE 流式输出
 
 基于 **Spring Boot 3.4 + Vue 3 + LangChain4j** 的全栈智能对话平台。内置 Prompt 动态模板引擎，支持 **DeepSeek / 百炼通义千问** 双模型一键切换，提供文档上传 RAG 能力，SSE 流式实时推送。
