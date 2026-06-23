@@ -1,6 +1,6 @@
 ﻿# SmartKB - Intelligent Knowledge Base Chat Platform
 
-[中文](./README.md)
+[简体中文](./README.zh-CN.md)
 
 > Dynamic Prompt Plugin System | Multi-Model Switching | RAG Q&A | SSE Streaming
 
